@@ -19,8 +19,14 @@ function Game({ operator, firstNum, secondNum, problemCount, setGameStarted, sou
     const wow_bg = useRef(sounds.wow);
 
     useEffect(() => {
+        // Initialize the question
         setCurrentQuestion(generateQuestion(firstNum, secondNum, operator))
         startTimer()
+
+        // Cleanup function to clear timer when component unmounts
+        return () => {
+            clearInterval(timerInterval.current)
+        }
     }, [firstNum, secondNum, operator])
 
     const startTimer = () => {
@@ -31,16 +37,20 @@ function Game({ operator, firstNum, secondNum, problemCount, setGameStarted, sou
         }, 1000)
     }
 
-    const handleSubmit = () => {
-        if (checkAnswer(userAnswer, currentQuestion.answer)) {
-            if (soundOn) correct_bg.current.play();
-            if (questionNumber < problemCount) {
-                setUserAnswer('')
-                setQuestionNumber(questionNumber + 1)
-                setCurrentQuestion(generateQuestion(firstNum, secondNum, operator))
-            } else {
-                if (soundOn) wow_bg.current.play();
-                setShowGameOver(true)
+    const handleSubmit = (e) => {
+        // Only process when Enter key is pressed or when checking the answer programmatically
+        if (e.type !== 'keyup' || e.key === 'Enter') {
+            if (checkAnswer(userAnswer, currentQuestion.answer)) {
+                if (soundOn) correct_bg.current.play();
+                if (questionNumber < problemCount) {
+                    setUserAnswer('')
+                    setQuestionNumber(questionNumber + 1)
+                    setCurrentQuestion(generateQuestion(firstNum, secondNum, operator))
+                } else {
+                    if (soundOn) wow_bg.current.play();
+                    clearInterval(timerInterval.current);
+                    setShowGameOver(true)
+                }
             }
         }
     }
@@ -52,7 +62,13 @@ function Game({ operator, firstNum, secondNum, problemCount, setGameStarted, sou
     }
 
     const quitGame = () => {
+        clearInterval(timerInterval.current)
         setGameStarted(false)
+    }
+
+    // Early return while the question is loading
+    if (!currentQuestion) {
+        return <div className="text-center p-5">Loading question...</div>
     }
 
     return (
@@ -62,15 +78,13 @@ function Game({ operator, firstNum, secondNum, problemCount, setGameStarted, sou
                 <span>{formatTime(timer)}</span>
                 <span className='cursor-pointer' onClick={() => setShowAbortModal(true)}>Abort</span>
             </div>
-            {currentQuestion && (
-                <div className="d-flex flex-row align-items-center justify-content-center gap-4 p-4 rounded-4 fw-bold q-container">
-                    <span>{currentQuestion.num1}</span>
-                    <span>{currentQuestion.operator}</span>
-                    <span>{currentQuestion.num2}</span>
-                    <span>=</span>
-                    <span>?</span>
-                </div>
-            )}
+            <div className="d-flex flex-row align-items-center justify-content-center gap-4 p-4 rounded-4 fw-bold q-container">
+                <span>{currentQuestion.num1}</span>
+                <span>{currentQuestion.operator}</span>
+                <span>{currentQuestion.num2}</span>
+                <span>=</span>
+                <span>?</span>
+            </div>
             <input
                 type="text"
                 className="form-control mx-auto mt-3 fs-3 text-center"
@@ -133,7 +147,6 @@ function Game({ operator, firstNum, secondNum, problemCount, setGameStarted, sou
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }
