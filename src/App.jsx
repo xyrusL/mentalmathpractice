@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useState } from 'react-router-dom'
 import './App.css'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
@@ -17,7 +16,7 @@ function App() {
     const [soundOn, setSoundOn] = useState(true)
 
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/mentalmathpractice">
             <div className="container-fluid min-vh-100 d-flex flex-column p-3">
                 <NavBar soundOn={soundOn} setSoundOn={setSoundOn}/>
                 <Routes>
