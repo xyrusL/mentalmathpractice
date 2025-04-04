@@ -2,8 +2,6 @@
 
 An interactive web application designed to help users improve their mental math skills through customizable practice exercises.
 
-![Mental Math Practice](https://github.com/xyrusl/mentalmathpractice/raw/main/public/icon.png)
-
 ## Overview
 
 Mental Math Practice Online is a React-based web application that allows users to practice mental arithmetic operations including addition, subtraction, multiplication, and division. The app generates customizable math problems based on user preferences and provides immediate feedback on answers.
