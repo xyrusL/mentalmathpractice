@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa'
 
-function Navbar({ soundOn, setSoundOn}) {
+function Navbar({ soundOn, setSoundOn }) {
     const toggleSound = () => {
         setSoundOn(!soundOn)
     }
@@ -14,8 +14,12 @@ function Navbar({ soundOn, setSoundOn}) {
                 </h1>
             </Link>
             <ul className="list-unstyled d-flex flex-row mb-0 fs-4">
-                <li className="mx-3 cursor-pointer"><Link to="/About" className="text-decoration-none text-white">About</Link></li>
-                <li className="mx-3 cursor-pointer"><Link to="/Tutorial" className="text-decoration-none text-white">Tutorial</Link></li>
+                <li className="mx-3 cursor-pointer">
+                    <Link to="/about" className="text-decoration-none text-white">About</Link>
+                </li>
+                <li className="mx-3 cursor-pointer">
+                    <Link to="/tutorial" className="text-decoration-none text-white">Tutorial</Link>
+                </li>
                 <li className="mx-3 cursor-pointer">SourceCode</li>
                 <li className="mx-3 cursor-pointer" onClick={toggleSound}>
                     {soundOn ? <FaVolumeUp className="text-white" /> : <FaVolumeMute className="text-white" />}
