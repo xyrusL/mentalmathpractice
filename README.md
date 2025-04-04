@@ -1,12 +1,49 @@
-# React + Vite
+# Mental Math Practice Online
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive web application designed to help users improve their mental math skills through customizable practice exercises.
 
-Currently, two official plugins are available:
+![Mental Math Practice](https://github.com/xyrusl/mentalmathpractice/raw/main/public/icon.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## Expanding the ESLint configuration
+Mental Math Practice Online is a React-based web application that allows users to practice mental arithmetic operations including addition, subtraction, multiplication, and division. The app generates customizable math problems based on user preferences and provides immediate feedback on answers.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- **Customizable Practice**: Choose from various math operations (+, -, *, ÷)
+- **Adjustable Difficulty**: Select number sizes from 1 to 6 digits for each operand
+- **Flexible Problem Sets**: Set the number of problems per session
+- **Progress Tracking**: Track completion and time taken
+- **Sound Feedback**: Optional sound effects for correct answers (can be toggled on/off)
+- **Educational Content**: Access tutorial videos on mental math techniques
+- **Responsive Design**: Works on both desktop and mobile devices
+
+## How to Use
+
+1. Configure your practice session:
+   - Select the number of digits for each operand
+   - Choose the math operation
+   - Set the number of problems
+2. Click "Start Now!" to begin
+3. Solve each problem and input your answer
+4. Complete all problems to finish the session
+
+## Development
+
+This project is built with:
+- React 19
+- Vite
+- React Router
+- Bootstrap 5
+
+## Running Locally
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
