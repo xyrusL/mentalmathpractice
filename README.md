@@ -4,7 +4,7 @@ An interactive web application designed to help users improve their mental math 
 
 ## Overview
 
-Mental Math Practice Online is a React-based web application that allows users to practice mental arithmetic operations including addition, subtraction, multiplication, and division. The app generates customizable math problems based on user preferences and provides immediate feedback on answers.
+Mental Math Practice Online is a React-based web application that allows users to practice mental arithmetic operations including addition, subtraction, multiplication, and division. The app generates customizable math problems based on user preferences and provides immediate feedback on answers. This project is part of my learning React JS and Bootstrap 5 with the help of AI to make my progress fast and productive. I know there is room for improvement here and problems that need fixing.
 
 ## Features
 
@@ -33,15 +33,3 @@ This project is built with:
 - Vite
 - React Router
 - Bootstrap 5
-
-## Running Locally
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
